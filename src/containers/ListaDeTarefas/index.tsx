@@ -33,16 +33,30 @@ const ListadeTarefas = () => {
     }
   }
 
+  const exibeResultadoFiltragem = (quantidade: number) => {
+    let mensagem = ''
+    const complementacao =
+      termo !== undefined && termo.length > 0 ? `e "${termo}" ` : ''
+
+    if (criterio === 'todas') {
+      mensagem = `${quantidade} tarefa(s) encontrada(s) como: todas
+      ${complementacao}`
+    } else {
+      mensagem = `${quantidade} tarefa(s) encontrada(s) como: "${`${criterio}=${valor}`}" ${complementacao}`
+    }
+
+    return mensagem
+  }
+
+  const tarefas = filtraTarefas()
+  const mensagem = exibeResultadoFiltragem(tarefas.length)
+
   return (
     <S.Main>
-      <p>2 tarefas marcadas como: categoria e {termo}</p>
+      <S.Resultado>{mensagem}</S.Resultado>
+
       <ul>
-        <li>{termo}</li>
-        <li>{criterio}</li>
-        <li>{valor}</li>
-      </ul>
-      <ul>
-        {filtraTarefas().map((tarefa, index) => (
+        {tarefas.map((tarefa, index) => (
           <li key={index}>
             <Tarefa
               id={tarefa.id}
