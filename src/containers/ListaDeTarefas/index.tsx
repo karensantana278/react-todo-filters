@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tarefa } from '../../components/Tarefa'
 
-import * as S from './styles'
+import * as S from '../../styles'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 

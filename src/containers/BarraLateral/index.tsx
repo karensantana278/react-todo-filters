@@ -5,6 +5,7 @@ import * as enums from '../../utils/enums/Tarefa'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { alterarTermo } from '../../store/reducers/filtro'
+import { Campo } from '../../styles'
 
 const BarraLateral = () => {
   const dispatch = useDispatch()
@@ -14,7 +15,7 @@ const BarraLateral = () => {
   return (
     <S.Aside>
       <div>
-        <S.Campo
+        <Campo
           type="search"
           placeholder="Procurar"
           value={termo}
